@@ -31,15 +31,8 @@ class WebsiteController extends Controller
 	public function search(Request $request)
 	{
 		// The domain sent from the input
-		$domain = $request->domain;
+		$websites = Website::where('url','LIKE','%'.$request->domain.'%')->first();
+		return response()->json($websites);
 
-		if (empty($domain)) {
-			return response()->json(['error' => 'Invalid domain']);
-		}
-
-		// If no results
-		if (empty($results)) {
-			return response()->json(['error' => 'No URL found'], 404);
-		}
     }
 }

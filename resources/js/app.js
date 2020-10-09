@@ -7,6 +7,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import swal from 'sweetalert2';
+window.Swal = swal;
 
 /**
  * The following block of code may be used to automatically register your
@@ -17,9 +19,16 @@ window.Vue = require('vue');
  */
 
 // const files = require.context('./', true, /\.vue$/i)
+Vue.component('website-search', require('./components/WebsiteSearchComponent.vue').default);
+import router from './routes';
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('website-search', require('./components/WebsiteSearchComponent.vue').default);
+// import VueToast from 'vue-toast-notification';
+// Import one of available themes
+// import 'vue-toast-notification/dist/theme-default.css';
+//import 'vue-toast-notification/dist/theme-sugar.css';
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,4 +38,5 @@ Vue.component('website-search', require('./components/WebsiteSearchComponent.vue
 
 const app = new Vue({
     el: '#app',
+    router
 });
